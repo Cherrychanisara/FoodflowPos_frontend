@@ -1,8 +1,11 @@
 import React from 'react'
+import CreateMenu from '../../components/Createmenu'
 
 function Order() {
   return (
-    <div>Order food</div>
+    <div>
+      <CreateMenu/>
+    </div>
   )
 }
 

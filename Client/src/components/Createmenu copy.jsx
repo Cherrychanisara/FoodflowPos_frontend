@@ -1,20 +1,20 @@
 import { useState } from "react";
-import Createcategory from "../../components/Createcategory";
+import Createcategory from "./Createcategory";
+import axios from "axios";
+import useUserStore from '../store/userStore';
 
 
 export default function CreateMenu() {
   const [menuItems, setMenuItems] = useState([]);
-  const [newItem, setNewItem] = useState({ name: "", price: "", category: "" });
+  const [newItem, setNewItem] = useState({ name: "", price: ""});
+  const [addCart, setAddCart] = useState([]);
   const [file, setFile] = useState(null)
 
-  
 
-  const addMenuItem = async (e) => {
-    if (newItem.name && newItem.price && newItem.category) {
+  async function addMenuItem (e) {
+    if (newItem.name && newItem.price) {
     setMenuItems([...menuItems, newItem]);
-    setNewItem({ name: "", price: "", category: "" }); }
-
-    e.preventDefault()
+    setNewItem({ name: "", price: ""}); }
 
     try {
 
@@ -22,7 +22,6 @@ export default function CreateMenu() {
 
       formData.append()
 
-        
     } catch (error) {
       console.log(error);
       
@@ -36,21 +35,22 @@ export default function CreateMenu() {
 
   return (
     <div className="max-w-lg mx-auto p-6 space-y-6 bg-[#f2f4f7] min-h-screen">
-      <h2 className="text-2xl font-semibold text-center text-gray-800">Create Menu</h2>
+      <h2 className="text-2xl font-semibold text-center text-gray-800">Create Your Order</h2>
 
       <div className="flex justify-center gap-5 ">
-      <button className="btn bg-[#e9e6e6] hover:bg-[#f1f0f0] shadow-lg text-red-600 font-medium py-2 px-4 rounded-md"
-        onClick={() => document.getElementById('my_modal_5').showModal()}>+ menu</button>
-
-      <button className="btn bg-[#e9e6e6] hover:bg-[#f1f0f0] shadow-lg text-red-600 font-medium py-2 px-4 rounded-md"
-      onClick={()=> document.getElementById('my_modal_6').showModal()}>+ Category</button>
+   
       </div>
+   {/* <button className="btn bg-[#e9e6e6] hover:bg-[#f1f0f0] shadow-lg text-red-600 font-medium py-2 px-4 rounded-md"
+        onClick={() => document.getElementById('my_modal_5').showModal()}>+ menu</button> */}
 
-      {/* category */}
-      <dialog id="my_modal_6" className="bg-white shadow-lg rounded-2xl h-[400px] w-3/5   ">
-      <Createcategory setNewItem={setNewItem} newItem={newItem} />
+      {/* <button className="btn bg-[#e9e6e6] hover:bg-[#f1f0f0] shadow-lg text-red-600 font-medium py-2 px-4 rounded-md"
+      onClick={()=> document.getElementById('my_modal_6').showModal()}>+ Category</button> */}
+      
+      {/* category
+      <dialog id="my_modal_6" className="bg-white shadow-lg rounded-2xl h-[500px] w-3/5 fixed top-10 ">
+      <Createcategory setNewItem={setNewItem} newItem={newItem} /> */}
         
-      </dialog>
+      {/* </dialog> */}
 
       {/* menu */}
       <dialog id="my_modal_5" className="bg-white shadow-lg rounded-2xl h-[500px] w-3/5   ">
@@ -94,14 +94,14 @@ export default function CreateMenu() {
                   onChange={(e) => setNewItem({ ...newItem, price: e.target.value })}
                 />
 
-                <div className="flex">
+                {/* <div className="flex">
                   <input
                     className="border p-3 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-500 "
                     placeholder="Category"
                     value={newItem.category}
                     onChange={(e) => setNewItem({ ...newItem, category: e.target.value })}
                   />
-                </div>
+                </div> */}
                 
               </div>
 
@@ -147,3 +147,4 @@ export default function CreateMenu() {
     </div>
   );
 }
+

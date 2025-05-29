@@ -1,7 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router'
 import Layout from '../layouts/Layout'
-import Createmenu from '../pages/auth/Createmenu'
 import Dashboard from '../pages/auth/Dashboard'
 import Order from '../pages/auth/Order'
 import Drawer from '../pages/auth/Drawer'
@@ -22,7 +21,6 @@ function AppRoutes() {
         <Route path="drawer" element={<Drawer />}/>
         <Route path="order" element={<Order />} />
         <Route path="bills" element={<Bills/>} />
-        <Route path="createmenu" element={<Createmenu />} />
         <Route path="dashboard" element={<Dashboard />} />
       </Route>
 

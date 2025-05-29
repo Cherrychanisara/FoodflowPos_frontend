@@ -13,12 +13,8 @@ function Createcategory() {
     setInputCategory(event.target.value)
   }
 
-  async function handleAddCategory() {
-    // [ X ] Check user input if it's a blank or blankspace or not met requirement.
-    // Check the input
-    // if not met reqquirement
-    // show warning message.
-
+  async function handleAddCategory(event) {
+    event.preventDefault(); 
     if (!inputCategory.trim()) {
       toast.error('Please Input message')
       return
